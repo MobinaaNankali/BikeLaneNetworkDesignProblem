@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python run_em_highest_flow_candidates.py --generate-only)",
+      "Bash(grep -vE \"^[0-9]+$\")",
+      "Bash(timeout 400 python -c ' *)",
+      "Bash(timeout 600 python run_em_highest_flow_candidates.py --skip-generate --timelimit 60 --output /private/tmp/claude-502/-Users-nanka005-Documents-Bike-lane-research-BikeLaneNDP-main-4/8a07510d-7920-41e9-80bf-484b5b14c8b7/scratchpad/test_results.csv)"
+    ]
+  }
+}

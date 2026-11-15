@@ -1,0 +1,59 @@
+248
+16.106817 0.007909458
+5.395143 0.009196205
+15.442909 0.007913591
+6.951621 0.005875119
+10.076888 0.018856818
+13.189106 0.005298354
+11.36016 0.017090367
+8.141116 0.05
+1.512241 0.0063858
+3.077846 0.013600835
+total_cost is  1.252683343213457
+Budget is 50% of the total cost
+yvars 10
+iteration lb best ub node ub gap time
+Traceback (most recent call last):
+  File "/private/tmp/bikelane-review-deps/docplex/mp/cplex_engine.py", line 2045, in solve
+    cpx.solve()
+  File "/private/tmp/bikelane-review-deps/cplex/__init__.py", line 1320, in solve
+    _proc.lpopt(self._env._e, self._lp)
+  File "/private/tmp/bikelane-review-deps/cplex/_internal/_procedural.py", line 738, in lpopt
+    check_status(env, status)
+  File "/private/tmp/bikelane-review-deps/cplex/_internal/_procedural.py", line 249, in __call__
+    raise CplexSolverError(error_string, env, status)
+cplex.exceptions.errors.CplexSolverError: CPLEX Error  1016: Community Edition. Problem size limits exceeded. Purchase at http://ibm.biz/error1016.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/private/tmp/run_em10_one.py", line 34, in <module>
+    result = solver.solve()
+             ^^^^^^^^^^^^^^
+  File "/Users/nanka005/Desktop/BikeLaneNetworkDesignProblem/src/NewOA_DNDP_withtimelimit.py", line 311, in solve
+    node_status, y = self.solveNode(active_node, 10 if iteration == 1 else 1)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nanka005/Desktop/BikeLaneNetworkDesignProblem/src/NewOA_DNDP_withtimelimit.py", line 529, in solveNode
+    cg_status, obj_l, x_car, x_bike, y = self.CG()
+                                         ^^^^^^^^^
+  File "/Users/nanka005/Desktop/BikeLaneNetworkDesignProblem/src/NewOA_DNDP_withtimelimit.py", line 674, in CG
+    RMP_status, OFV, link_duals_car, link_duals_bike, dem_duals_car, dem_duals_bike = self.solveRMP()
+                                                                                      ^^^^^^^^^^^^^^^
+  File "/Users/nanka005/Desktop/BikeLaneNetworkDesignProblem/src/NewOA_DNDP_withtimelimit.py", line 643, in solveRMP
+    solution = self.rmp.solve(log_output=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/bikelane-review-deps/docplex/mp/model.py", line 4904, in solve
+    return self._solve_local(context, used_clean_before_solve, parameter_sets)# lex_timelimits, lex_mipgaps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/bikelane-review-deps/docplex/mp/model.py", line 4952, in _solve_local
+    raise docpx_e
+  File "/private/tmp/bikelane-review-deps/docplex/mp/model.py", line 4941, in _solve_local
+    new_solution = self_engine.solve(self,
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/bikelane-review-deps/docplex/mp/cplex_engine.py", line 2082, in solve
+    self._model.fatal_ce_limits()
+  File "/private/tmp/bikelane-review-deps/docplex/mp/model.py", line 1101, in fatal_ce_limits
+    self._error_handler.fatal_limits_exceeded(nb_vars, nb_constraints)
+  File "/private/tmp/bikelane-review-deps/docplex/mp/error_handler.py", line 214, in fatal_limits_exceeded
+    raise DOcplexLimitsExceeded(nb_vars, nb_constraints)
+docplex.mp.utils.DOcplexLimitsExceeded: **** Promotional version. Problem size limits (1000 vars, 1000 consts) exceeded, model has 3496 vars, 3011 consts, CPLEX code=1016
